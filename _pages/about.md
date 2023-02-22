@@ -1,17 +1,16 @@
 ---
 layout: about
 title: about
-permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+permalink: http://ccel.postech.ac.kr/Welcome.html/
+subtitle: <a href='#'>Affiliations</a>. Computational Catalysis and Emerging Materials Laboratory (CCEL), Dept. of Chem. Eng., Pohang University of Science and Technology (POSTECH)
 
 profile:
   align: right
   image: jeju.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: true # false # crops the image to make it circular
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>shindj91@postech.ac.kr</p>
+    <p>Pohang, South Korea</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
