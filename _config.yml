@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: "<b>Dongjae Shin</b> (신동재)" # the website title (if blank, full name will be used instead)
+title: blank # the website title (if blank, full name will be used instead)
 first_name: Dongjae
 middle_name: 
 last_name: Shin
