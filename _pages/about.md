@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='ccel.postech.ac.kr'>Computational Catalysis and Emerging Materials Laboratory (CCEL)</a>, <a href='ce.postech.ac.kr'>Dept. of Chem. Eng.</a>, <a href='postech.ac.kr'>Pohang University of Science and Technology (POSTECH)</a>
+subtitle: Ph.D. Candidate, <a href='ccel.postech.ac.kr'>Computational Catalysis and Emerging Materials Laboratory (CCEL)</a>,<br> <a href='ce.postech.ac.kr'>Dept. of Chem. Eng.</a>, <a href='postech.ac.kr'>Pohang University of Science and Technology (POSTECH)</a>
 
 profile:
   align: right
