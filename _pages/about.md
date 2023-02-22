@@ -1,7 +1,7 @@
 ---
 layout: about
 title: about
-permalink: http://ccel.postech.ac.kr/Welcome.html/
+permalink: /
 subtitle: <a href='#'>Affiliations</a>. Computational Catalysis and Emerging Materials Laboratory (CCEL), Dept. of Chem. Eng., Pohang University of Science and Technology (POSTECH)
 
 profile:
