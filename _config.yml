@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: research_page # the website title (if blank, full name will be used instead)
+title: "research page" # the website title (if blank, full name will be used instead)
 first_name: Dongjae
 middle_name: 
 last_name: Shin
