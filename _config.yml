@@ -255,7 +255,7 @@ display_tags: ['formatting', 'images', 'links', 'math', 'code'] # this tags will
 
 scholar:
 
-  last_name: [Shin]
+  last_name: [Shin, Shin<sup>†</sup>]
   first_name: [Dongjae, D.]
 
   style: apa
