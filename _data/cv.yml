@@ -11,23 +11,24 @@
 - title: Education
   type: time_table
   contents:
-    - title: PhD
+    - title: PhD in Chemical Engineering
       institution: Pohang University of Science and Technology, Pohang, South Korean
       year: 2023
       description:
-        - Description 1.
+        - Thesis: TBD
+        - Advisor: Jeong Woo Han
         - Description 2.
         - title: Description 3.
           contents:
             - Sub-description 1.
             - Sub-description 2.
-    - title: M.S.
+    - title: M.S. in Energy, Environment, Water, and Sustainability
       institution: Korea Advanced Institute of Science and Technology, Daejeon, South Korea
       year: 2018
       description:
-        - Description 1.
-        - Description 2.
-    - title: B.S.
+        - Thesis: First-principles study of magnetism development in armchair graphene nanoribbons with edge functionalizations 
+        - Advisor: Yong-Hoon Kim
+    - title: B.S. in Chemical Engineering
       institution: University of Seoul, Seoul, South Korea
       year: 2016
       description:
