@@ -12,11 +12,11 @@
   type: time_table
   contents:
     - title: PhD in Chemical Engineering
-      institution: Pohang University of Science and Technology, Pohang, South Korean
+      institution: Pohang University of Science and Technology, Pohang, South Korea
       year: 2023
       description:
         - TBD
-        - Advised by Prof.Jeong Woo Han
+        - Advisor: Prof.Jeong Woo Han
         - Description 2.
         - title: Description 3.
           contents:
@@ -38,11 +38,11 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Postdoctoral Associate
+      institution: SUNCAT Center for Interface Science and Catalysis, Stanford University, Menlo Park, CA, US
+      year: 1/2024 - Present
       description:
-        - Description 1.
+        - Advisor: Dr. Kirsten Winther
         - Description 2.
         - title: Description 3.
           contents:
