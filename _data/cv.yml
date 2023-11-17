@@ -16,7 +16,7 @@
       year: 2023
       description:
         - TBD
-        - Advisor: Prof.Jeong Woo Han
+        - Advisor":" Prof.Jeong Woo Han
         - Description 2.
         - title: Description 3.
           contents:
@@ -42,7 +42,7 @@
       institution: SUNCAT Center for Interface Science and Catalysis, Stanford University, Menlo Park, CA, US
       year: 1/2024 - Present
       description:
-        - Advisor: Dr. Kirsten Winther
+        - Advisor":" Dr. Kirsten Winther
         - Description 2.
         - title: Description 3.
           contents:
