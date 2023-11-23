@@ -15,25 +15,23 @@
       institution: Pohang University of Science and Technology, Pohang, South Korean
       year: 2023
       description:
-        - TBD
-        - Advised by Prof.Jeong Woo Han
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
+        - AI-Aided Computational Design of Ceria-based High Performance Catalytic Materials (Thesis)
+        - "Advisor: Prof.Jeong Woo Han"
+        #- title: Description 3.
+        #  contents:
+        #    - Sub-description 1.
+        #    - Sub-description 2.
     - title: M.S. in Energy, Environment, Water, and Sustainability
       institution: Korea Advanced Institute of Science and Technology, Daejeon, South Korea
       year: 2018
       description:
-        - First-principles study of magnetism development in armchair graphene nanoribbons with edge functionalizations 
+        - First-principles study of magnetism development in armchair graphene nanoribbons with edge functionalizations (Thesis)
         - Advised by Prof.Yong-Hoon Kim
     - title: B.S. in Chemical Engineering
       institution: University of Seoul, Seoul, South Korea
       year: 2016
       description:
-        - Description 1.
-        - Description 2.
+        - Graduation with 1st rank in chemical engineering
 
 - title: Experience
   type: time_table
