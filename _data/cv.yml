@@ -12,25 +12,15 @@
   type: time_table
   contents:
     - title: PhD in Chemical Engineering
-      institution: Pohang University of Science and Technology, Pohang, South Korea
+      institution: Pohang University of Science and Technology, Pohang, South Korean
       year: 2023
       description:
-<<<<<<< HEAD
         - AI-Aided Computational Design of Ceria-based High Performance Catalytic Materials (Thesis)
         - "Advisor: Prof.Jeong Woo Han"
         #- title: Description 3.
         #  contents:
         #    - Sub-description 1.
         #    - Sub-description 2.
-=======
-        - TBD
-        - Advisor":" Prof.Jeong Woo Han
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
->>>>>>> bfc4bfa703e086e6efb6cf3dd2a29051d8032f90
     - title: M.S. in Energy, Environment, Water, and Sustainability
       institution: Korea Advanced Institute of Science and Technology, Daejeon, South Korea
       year: 2018
@@ -46,11 +36,11 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Postdoctoral Associate
-      institution: SUNCAT Center for Interface Science and Catalysis, Stanford University, Menlo Park, CA, US
-      year: 1/2024 - Present
+    - title: Professor of Theoretical Physics
+      institution: Institute for Advanced Study, Princeton University
+      year: 1933 - 1955
       description:
-        - Advisor":" Dr. Kirsten Winther
+        - Description 1.
         - Description 2.
         - title: Description 3.
           contents:
