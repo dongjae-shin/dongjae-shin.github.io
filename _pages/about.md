@@ -5,7 +5,7 @@ permalink: /
 subtitle: Ph.D. Candidate, <a href='http://ccel.postech.ac.kr'>Computational Catalysis and Emerging Materials Laboratory (CCEL)</a>,<br> <a href='http://ce.postech.ac.kr'>Dept. of Chem. Eng.</a>, <a href='http://postech.ac.kr'>Pohang University of Science and Technology (POSTECH)</a>
 
 profile:
-  align: left
+  align: right
   image: dj_at_postech.jpg
   image_circular: true # false # crops the image to make it circular
   address: >
