@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Ph.D. Candidate, <a href='http://ccel.postech.ac.kr'>Computational Catalysis and Emerging Materials Laboratory (CCEL)</a>,<br> <a href='http://ce.postech.ac.kr'>Dept. of Chem. Eng.</a>, <a href='http://postech.ac.kr'>Pohang University of Science and Technology (POSTECH)</a>
+subtitle: Postdoctoral Associate, <a href='http://ccel.snu.ac.kr'>Computational Catalysis and Emerging Materials Laboratory (CCEL)</a>,<br> <a href='http://mse.snu.ac.kr'>Dept. of Mater. Sci. & Eng.</a>, <a href='https://en.snu.ac.kr'>Seoul National University (SNU)</a>
 
 profile:
   align: right
@@ -17,7 +17,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am currently working as a postdoctoral researcher in Research Institute of Advanced Materials (RIAM) at Seoul National University (SNU).
+I am currently working as a postdoctoral researcher in Department of Materials Science and Engineering and Research Institute of Advanced Materials (RIAM) at Seoul National University (SNU).
 
 I obtained my Ph.D. degree in Chemical Engineering from Pohang University of Science and Technology (POSTECH).
 
