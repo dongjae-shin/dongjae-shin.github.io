@@ -2,22 +2,22 @@
 layout: about
 title: about
 permalink: /
-subtitle: Postdoctoral Associate, <a href='http://ccel.snu.ac.kr'>Computational Catalysis and Emerging Materials Laboratory (CCEL)</a>,<br> <a href='http://mse.snu.ac.kr'>Dept. of Mater. Sci. & Eng.</a>, <a href='https://en.snu.ac.kr'>Seoul National University (SNU)</a>
+subtitle: Postdoctoral Scholar (incoming), <a href='http://suncat.stanford.edu'>SUNCAT Center for Interface Science and Catalysis</a>,<br> <a href='https://www6.slac.stanford.edu/'>SLAC National Accelerator Laboratory</a>, <a href='https://stanford.edu'>Stanford University</a>
 
 profile:
   align: right
   image: dj_at_postech.jpg
   image_circular: true # false # crops the image to make it circular
   address: >
-    <p>dj.shin@snu.ac.kr</p>
-    <p>Seoul, South Korea</p>
+    <p>djayshin@stanford.edu</p>
+    <p>Menlo Park, California</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am currently working as a postdoctoral researcher in Department of Materials Science and Engineering and Research Institute of Advanced Materials (RIAM) at Seoul National University (SNU).
+I am currently working as a postdoctoral scholar in SUNCAT Center for Interface Science and Catalysis at SLAC National Accelerator Laboratory and Stanford University.
 
 I obtained my Ph.D. degree in Chemical Engineering from Pohang University of Science and Technology (POSTECH).
 
