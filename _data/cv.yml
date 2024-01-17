@@ -36,12 +36,12 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Postdoctoral Scholar
+    - title: <a href='https://www6.slac.stanford.edu/'>SLAC National Accelerator Laboratory</a>
       institution: Stanford University & SLAC National Accelerator Laboratory, Menlo Park, California, United States
       year: 2024-present
       description:
         - SUNCAT Center for Interface Science and Catalysis
-        - "Advisor:"<a href='https://suncat.stanford.edu/people/kirsten-winther'>Dr. Kirsten T. Winther</a>
+        - "Advisor: Dr. Kirsten T. Winther"
 
     - title: Senior Researcher
       institution: Seoul National University, Seoul, South Korea
