@@ -195,6 +195,3 @@ DEPENDENCIES
   jemoji
   unicode_utils
   webrick
-
-BUNDLED WITH
-   1.17.2
