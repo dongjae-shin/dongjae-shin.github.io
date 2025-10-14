@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Postdoctoral Scholar (incoming), <a href='http://suncat.stanford.edu'>SUNCAT Center for Interface Science and Catalysis</a>,<br> <a href='https://www6.slac.stanford.edu/'>SLAC National Accelerator Laboratory</a>, <a href='https://stanford.edu'>Stanford University</a>
+subtitle: Postdoctoral Scholar, <a href='http://suncat.stanford.edu'>SUNCAT Center for Interface Science and Catalysis</a>,<br> <a href='https://www6.slac.stanford.edu/'>SLAC National Accelerator Laboratory</a>, <a href='https://stanford.edu'>Stanford University</a>
 
 profile:
   align: right
