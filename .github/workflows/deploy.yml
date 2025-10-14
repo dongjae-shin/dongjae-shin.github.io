@@ -29,6 +29,9 @@ jobs:
     - name: Update Bundler
       run: gem install bundler
 
+    - name: Uninstall old bundler
+      run: gem uninstall bundler -v 1.17.2 || true
+
     - name: Install Ruby gems
       run: bundle install
 
