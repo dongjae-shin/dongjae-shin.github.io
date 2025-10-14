@@ -25,9 +25,12 @@ jobs:
 
     - name: Update RubyGems
       run: gem update --system 3.3.22
+
     - name: Update Bundler
       run: gem install bundler
 
+    - name: Install Ruby gems
+      run: bundle install
 
     - name: Install deps
       run: |
