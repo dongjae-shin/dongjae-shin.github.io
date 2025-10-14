@@ -20,10 +20,14 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0.2'
-        bundler-cache: true
+        bundler: 'latest'
+#        bundler-cache: true
 
     - name: Update RubyGems
       run: gem update --system 3.3.22
+    - name: Update Bundler
+      run: gem install bundler
+
 
     - name: Install deps
       run: |
