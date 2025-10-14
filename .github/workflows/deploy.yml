@@ -50,6 +50,12 @@ jobs:
           echo "SRC_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
         fi
         echo "DEPLOY_BRANCH=gh-pages" >> $GITHUB_OUTPUT
+        
+    - name: Commit changes before deploy
+      run: |  
+        git add .
+        git diff --cached --quiet || git commit -m "Auto-commit before deploy"
+
     - name: Deploy website 
       run:  yes | bash bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
                     --src ${{ steps.setup.outputs.SRC_BRANCH }} 
