@@ -2,8 +2,7 @@ github_users:
   - dongjae-shin
 
 github_repos:
-  - dongjae-shin/CatDegUS
-  - dongjae-shin/PyCatRobin
   - dongjae-shin/SegrDNN
-  - dongjae-shin/pydrifts3d
+  - dongjae-shin/Ab_initio_thermo_HgOx
+  - dongjae-shin/DRIFTS_plot
   - dongjae-shin/MDUI
