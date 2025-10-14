@@ -23,7 +23,7 @@ jobs:
         bundler-cache: true
 
     - name: Update RubyGems
-      run: gem update --system
+      run: gem update --system 3.3.22
 
     - name: Install deps
       run: |
