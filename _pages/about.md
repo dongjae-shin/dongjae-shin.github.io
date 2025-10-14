@@ -9,7 +9,7 @@ profile:
   image: dj_at_postech.jpg
   image_circular: true # false # crops the image to make it circular
   address: >
-    <p>djayshin@stanford.edu</p>
+    <p>djayshin_at_stanford.edu</p>
     <p>Menlo Park, California</p>
 
 news: true  # includes a list of news items
