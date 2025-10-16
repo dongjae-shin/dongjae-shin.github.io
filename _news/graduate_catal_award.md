@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I have won the Graduate Catalyst Research Award presented by KIChE Catalysis Division, which is awarded to only three doctoral students annually!:trophy: -->
+I have won the Graduate Catalyst Research Award presented by KIChE Catalysis Division, which is awarded to only three doctoral students annually!
