@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://dongjae-shin.github.io/sitemap.xml
+Sitemap: https://dongjae-shin.github.io/al-folio/sitemap.xml
