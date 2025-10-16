@@ -451,6 +451,23 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
+          section: "News",},{id: "news-nrf-phd-fellowship",
+          title: 'Nrf_phd_fellowship',
+          description: "",
+          section: "News",handler: () => {
+              window.location.href = "/news/nrf_phd_fellowship/";
+            },},{id: "news-i-have-won-the-graduate-catalyst-research-award-presented-by-kiche-catalysis-division-which-is-awarded-to-only-three-doctoral-students-annually-trophy-amp-gt",
+          title: 'I have won the Graduate Catalyst Research Award presented by KIChE Catalysis Division,...',
+          description: "",
+          section: "News",},{id: "news-my-recent-work-with-woonsuk-has-been-accepted-for-publication-in-acs-catalysis-and-selected-as-a-supplementary-cover-sparkles-smile",
+          title: 'My recent work with Woonsuk has been accepted for publication in ACS Catalysis...',
+          description: "",
+          section: "News",},{id: "news-my-recent-work-with-co-workers-from-computer-science-which-is-my-first-ml-paper-has-been-published-in-molecular-catalysis",
+          title: 'My recent work with co-workers from computer science, which is my first ML...',
+          description: "",
+          section: "News",},{id: "news-i-got-an-offer-for-postdoctoral-position-at-suncat-center-for-interface-science-and-catalysis-of-stanford-university-and-slac-national-accelerator-laboratory-i-will-start-my-new-position-as-of-feb-next-year",
+          title: 'I got an offer for postdoctoral position at SUNCAT Center for Interface Science...',
+          description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
           description: "with background image",
@@ -501,7 +518,14 @@ ninja.data = [{
         title: 'email',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:%79%6F%75@%65%78%61%6D%70%6C%65.%63%6F%6D", "_blank");
+          window.open("mailto:%64%6A%61%79%73%68%69%6E@%73%74%61%6E%66%6F%72%64.%65%64%75", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/dongjae-shin", "_blank");
         },
       },{
         id: 'social-inspire',
@@ -511,18 +535,32 @@ ninja.data = [{
           window.open("https://inspirehep.net/authors/1010907", "_blank");
         },
       },{
-        id: 'social-rss',
-        title: 'RSS Feed',
+        id: 'social-linkedin',
+        title: 'LinkedIn',
         section: 'Socials',
         handler: () => {
-          window.open("/feed.xml", "_blank");
+          window.open("https://www.linkedin.com/in/dongjae-shin-01095313a", "_blank");
+        },
+      },{
+        id: 'social-orcid',
+        title: 'ORCID',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://orcid.org/0000-0002-0492-0301", "_blank");
+        },
+      },{
+        id: 'social-researchgate',
+        title: 'ResearchGate',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.researchgate.net/profile/Dongjae-Shin/", "_blank");
         },
       },{
         id: 'social-scholar',
         title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("https://scholar.google.com/citations?user=qc6CJjYAAAAJ", "_blank");
+          window.open("https://scholar.google.com/citations?user=-9HK8-AAAAAJ&hl=en", "_blank");
         },
       },{
         id: 'social-custom_social',
