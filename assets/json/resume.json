@@ -31,7 +31,7 @@
       "startDate": "2024-02-16",
       "endDate": "Present",
       "summary": "Developing AI-driven navigation algorithm for catalytic experiments based on uncertainty quantification, and comparability assessment tools for catalytic performance results from multiple sources.",
-      "highlights": ["Advisors: Dr. Kirsten T. Winther and Dr. Christopher J. Tassone (SLAC)"]
+      "highlights": ["Advisors: Dr. Kirsten T. Winther and Dr. Christopher J. Tassone"]
     },
     {
       "name": "Research Institute of Advanced Materials (RIAM), Seoul National University",
@@ -50,8 +50,7 @@
       "url": "",
       "startDate": "2012-03-12",
       "endDate": "2013-12-11",
-      "summary": "Mandatory military service of 21 months in a chemical, biological, and radiological (CBR) unit",
-      "highlights": [""]
+      "summary": "Mandatory military service of 21 months in a chemical, biological, and radiological (CBR) unit"
     }
   ],
   "education": [
@@ -62,9 +61,7 @@
       "area": "Computational Catalysis",
       "studyType": "Ph.D. in Chemical Engineering",
       "startDate": "2019-02-18",
-      "endDate": "2023-08-11",
-      "score": "",
-      "courses": [""]
+      "endDate": "2023-08-11"
     },
     {
       "institution": "Korea Advanced Institute of Science and Technology (KAIST)",
@@ -73,9 +70,7 @@
       "area": "Computational Nanoscience",
       "studyType": "M.S. in Energy, Environment, Water, and Sustainability (EEWS)",
       "startDate": "2016-03-01",
-      "endDate": "2018-02-23",
-      "score": "",
-      "courses": [""]
+      "endDate": "2018-02-23"
     }
   ],
   "awards": [
@@ -100,9 +95,6 @@
       "url": "https://www.kiche.or.kr/en/",
       "summary": "Awarded to only one graduate student in catalysis division at a semi-annual KIChE conference in recognition of outstanding research achievement in the field of catalysis."
     }
-  ],
-  "certificates": [
-
   ],
   "languages": [
     {
@@ -139,11 +131,5 @@
         "AI-ready Data Curation"
       ]
     }
-  ],
-  "references": [
-
-  ],
-  "projects": [
-
   ]
 }
