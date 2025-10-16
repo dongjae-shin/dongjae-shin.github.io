@@ -2,23 +2,33 @@
 layout: about
 title: about
 permalink: /
-subtitle: Postdoctoral Scholar, <a href='http://suncat.stanford.edu'>SUNCAT Center for Interface Science and Catalysis</a>,<br> <a href='https://www6.slac.stanford.edu/'>SLAC National Accelerator Laboratory</a>, <a href='https://stanford.edu'>Stanford University</a>
+subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 
 profile:
   align: right
-  image: dj_at_postech.jpg
-  image_circular: true # false # crops the image to make it circular
-  address: >
-    <p>djayshin_at_stanford.edu</p>
-    <p>Menlo Park, California</p>
+  image: prof_pic.jpg
+  image_circular: false # crops the image to make it circular
+  more_info: >
+    <p>555 your office number</p>
+    <p>123 your address street</p>
+    <p>Your City, State 12345</p>
 
-news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+social: true # includes social icons at the bottom of the page
+
+announcements:
+  enabled: true # includes a list of news items
+  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  limit: 5 # leave blank to include all the news in the `_news` folder
+
+latest_posts:
+  enabled: true
+  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  limit: 3 # leave blank to include all the blog posts
 ---
 
-I am currently working as a postdoctoral scholar in SUNCAT Center for Interface Science and Catalysis at SLAC National Accelerator Laboratory and Stanford University.
+Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
-I obtained my Ph.D. degree in Chemical Engineering from Pohang University of Science and Technology (POSTECH).
+Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 
-My current research focuses on the `Design of Catalytic Materials`. I have studied atomistic phenomena on catalytic surfaces to develop materials with improved catalytic capability under the philosophy of rational design. To achieve this goal, I use computational approaches, e.g., `First-Principles Calculations` and `Artificial Intelligence (AI)`. Applications include heterogeneous catalysis for exhaust emission control, hydrogen production, and utilization of emission gas to realize carbon neutralization. Any research inquiry is welcome!
+Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.

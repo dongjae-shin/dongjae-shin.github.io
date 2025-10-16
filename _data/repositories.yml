@@ -1,9 +1,14 @@
 github_users:
-  - dongjae-shin
+  - torvalds
+  - alshedivat
+
+repo_description_lines_max: 2
 
 github_repos:
-  - dongjae-shin/CatDegUS
-  - dongjae-shin/PyCatRobin
-  - dongjae-shin/SegrDNN
-  - dongjae-shin/pydrifts3d
-  - dongjae-shin/MDUI
+  - alshedivat/al-folio
+  - jekyll/jekyll
+  - twbs/bootstrap
+  - jquery/jquery
+  - FortAwesome/Font-Awesome
+  - mathjax/MathJax
+  - jpswalsh/academicons
