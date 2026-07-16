@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-My first paper as a corresponding author with Dr. Winther has been accepted for publication in ACS Catalysis!
+My first paper as a corresponding author with Dr. Winther has been accepted for publication in *ACS Catalysis*!
