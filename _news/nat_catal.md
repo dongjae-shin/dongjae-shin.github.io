@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-My recent collaborative work at SUNCAT has been accepted for publication in *Nature Catalysis*!
+My recent collaborative work at SUNCAT has been accepted for publication in _Nature Catalysis_!

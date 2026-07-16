@@ -3,8 +3,8 @@
   contents:
     - name: Full Name
       value: Dongjae Shin
-#    - name: Date of Birth
-#      value: 1991
+    #    - name: Date of Birth
+    #      value: 1991
     - name: Languages
       value: Korean, English
 
@@ -56,7 +56,6 @@
       description:
         - Mandatory military service of 21 months at Capital Defense Command
         - Chemical, biological, and radiological (CBR) unit
-
 
     #- title: Director
     #  institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.

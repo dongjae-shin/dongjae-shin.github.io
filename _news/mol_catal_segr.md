@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-My recent work with co-workers from computer science, which is my first ML paper, has been published in *Molecular Catalysis*!
+My recent work with co-workers from computer science, which is my first ML paper, has been published in _Molecular Catalysis_!

@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-My recent work with Woonsuk has been accepted for publication in *ACS Catalysis* and selected as a Supplementary Cover!
+My recent work with Woonsuk has been accepted for publication in _ACS Catalysis_ and selected as a Supplementary Cover!

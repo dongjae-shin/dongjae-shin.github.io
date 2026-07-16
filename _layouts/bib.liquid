@@ -253,7 +253,7 @@
       {% if entry.website %}
         <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
       {% endif %}
-      {% assign google_scholar_citation_count = nil %}
+      {% assign google_scholar_citation_count = null %}
       {% if site.enable_publication_badges.google_scholar and entry.google_scholar_id %}
         {% capture google_scholar_citation_count %}{% google_scholar_citations site.data.socials.scholar_userid entry.google_scholar_id %}{% endcapture %}
         <a
