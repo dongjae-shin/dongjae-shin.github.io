@@ -428,7 +428,7 @@ ninja.data = [{
           title: 'My recent collaborative work at SUNCAT has been accepted for publication in Nature...',
           description: "",
           section: "News",},{id: "news-my-first-paper-as-a-corresponding-author-with-dr-winther-has-been-accepted-for-publication-in-acs-catalysis",
-          title: 'My first paper as a corresponding author with Dr.Winther has been accepted for...',
+          title: 'My first paper as a corresponding author with Dr. Winther has been accepted...',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
