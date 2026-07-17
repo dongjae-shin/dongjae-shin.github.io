@@ -255,7 +255,11 @@
       {% endif %}
       {% assign google_scholar_citation_count = null %}
       {% if site.enable_publication_badges.google_scholar and entry.google_scholar_id %}
-        {% capture google_scholar_citation_count %}{% google_scholar_citations site.data.socials.scholar_userid entry.google_scholar_id %}{% endcapture %}
+        {% if entry.google_scholar_citations %}
+          {% assign google_scholar_citation_count = entry.google_scholar_citations %}
+        {% else %}
+          {% capture google_scholar_citation_count %}{% google_scholar_citations site.data.socials.scholar_userid entry.google_scholar_id %}{% endcapture %}
+        {% endif %}
         <a
           href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user={{ site.data.socials.scholar_userid }}&citation_for_view={{ site.data.socials.scholar_userid }}:{{ entry.google_scholar_id }}"
           class="btn btn-sm z-depth-0"
