@@ -29,12 +29,12 @@ module Jekyll
       article_id = context[@article_id.strip].to_s.strip
       scholar_id = context[@scholar_id.strip].to_s.split(/[&?]/).first.strip
       article_url = "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=#{scholar_id}&citation_for_view=#{scholar_id}:#{article_id}"
+      cache_key = "#{scholar_id}:#{article_id}"
 
       return "N/A" if scholar_id.empty? || article_id.empty? || article_id == scholar_id
 
       begin
           # If the citation count has already been fetched, return it
-          cache_key = "#{scholar_id}:#{article_id}"
           if GoogleScholarCitationsTag::Citations[cache_key]
             return GoogleScholarCitationsTag::Citations[cache_key]
           end
@@ -67,6 +67,11 @@ module Jekyll
             if matches
               citation_count = matches[1].sub(",", "").to_i
             end
+          end
+
+          if citation_count.nil?
+            matches = doc.text.match(/Cited by\s+(\d[\d,]*)/i)
+            citation_count = matches[1].delete(",").to_i if matches
           end
 
         citation_count = if citation_count.nil?
