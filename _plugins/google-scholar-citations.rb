@@ -26,14 +26,17 @@ module Jekyll
     end
 
     def render(context)
-      article_id = context[@article_id.strip]
-      scholar_id = context[@scholar_id.strip]
+      article_id = context[@article_id.strip].to_s.strip
+      scholar_id = context[@scholar_id.strip].to_s.split(/[&?]/).first.strip
       article_url = "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=#{scholar_id}&citation_for_view=#{scholar_id}:#{article_id}"
+
+      return "N/A" if scholar_id.empty? || article_id.empty? || article_id == scholar_id
 
       begin
           # If the citation count has already been fetched, return it
-          if GoogleScholarCitationsTag::Citations[article_id]
-            return GoogleScholarCitationsTag::Citations[article_id]
+          cache_key = "#{scholar_id}:#{article_id}"
+          if GoogleScholarCitationsTag::Citations[cache_key]
+            return GoogleScholarCitationsTag::Citations[cache_key]
           end
 
           # Sleep for a random amount of time to avoid being blocked
@@ -43,7 +46,7 @@ module Jekyll
           doc = Nokogiri::HTML(URI.open(article_url, "User-Agent" => "Ruby/#{RUBY_VERSION}"))
 
           # Attempt to extract the "Cited by n" string from the meta tags
-          citation_count = 0
+          citation_count = nil
 
           # Look for meta tags with "name" attribute set to "description"
           description_meta = doc.css('meta[name="description"]')
@@ -66,7 +69,11 @@ module Jekyll
             end
           end
 
-        citation_count = Helpers.number_to_human(citation_count, :format => '%n%u', :precision => 2, :units => { :thousand => 'K', :million => 'M', :billion => 'B' })
+        citation_count = if citation_count.nil?
+          "N/A"
+        else
+          Helpers.number_to_human(citation_count, :format => '%n%u', :precision => 2, :units => { :thousand => 'K', :million => 'M', :billion => 'B' })
+        end
 
       rescue Exception => e
         # Handle any errors that may occur during fetching
@@ -76,7 +83,7 @@ module Jekyll
         puts "Error fetching citation count for #{article_id} in #{article_url}: #{e.class} - #{e.message}"
       end
 
-      GoogleScholarCitationsTag::Citations[article_id] = citation_count
+      GoogleScholarCitationsTag::Citations[cache_key] = citation_count
       return "#{citation_count}"
     end
   end
