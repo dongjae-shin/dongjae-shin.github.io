@@ -52,7 +52,10 @@ nav_order: 5.5
         </tbody>
       </table>
     </div>
-  {% else %}
-    <p>Visitor statistics are not configured yet.</p>
-  {% endif %}
+
+{% else %}
+
+<p>Visitor statistics are not configured yet.</p>
+{% endif %}
+
 </div>
