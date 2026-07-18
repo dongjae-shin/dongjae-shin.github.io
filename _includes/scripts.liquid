@@ -68,6 +68,9 @@
     crossorigin="anonymous"
   ></script>
   <script defer src="{{ '/assets/js/leaflet-setup.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
+  {% if page.visitor_map %}
+    <script defer src="{{ '/assets/js/visitor-map.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
+  {% endif %}
 {% endif %}
 
 {% if page.chart and page.chart.chartjs %}
