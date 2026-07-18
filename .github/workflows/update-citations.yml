@@ -1,0 +1,39 @@
+name: Update Google Scholar citations
+
+on:
+  schedule:
+    - cron: "17 10 * * 1"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: write
+
+jobs:
+  update-citations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update cached citation counts
+        run: python3 _scripts/update_google_scholar_citations.py
+
+      - name: Commit citation count changes
+        id: auto-commit-action
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+        with:
+          commit_message: Update Google Scholar citation counts
+          file_pattern: _bibliography/papers.bib
+
+      - name: Dispatch deploy workflow
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl -sSfL \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/deploy.yml/dispatches" \
+            -d "{\"ref\":\"${GITHUB_REF_NAME}\"}"
