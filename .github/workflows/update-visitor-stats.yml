@@ -31,12 +31,17 @@ jobs:
           GA_START_DATE: ${{ vars.GA_START_DATE }}
         run: python3 _scripts/update_visitor_stats.py
 
-      - name: Commit visitor stat changes
+      - name: Update GitHub repository stats
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 _scripts/update_github_repos.py
+
+      - name: Commit stat changes
         id: auto-commit-action
         uses: stefanzweifel/git-auto-commit-action@v5.0.1
         with:
-          commit_message: Update visitor stats
-          file_pattern: _data/visitor_stats.json
+          commit_message: Update visitor and GitHub repository stats
+          file_pattern: _data/visitor_stats.json _data/repositories.yml
 
       - name: Dispatch deploy workflow
         if: steps.auto-commit-action.outputs.changes_detected == 'true'

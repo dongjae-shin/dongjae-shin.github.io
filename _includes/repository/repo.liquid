@@ -1,4 +1,5 @@
 {% assign repo_url = include.repository | split: '/' %}
+{% assign repo_data = site.data.repositories.github_repo_metadata | where: 'full_name', include.repository | first %}
 {% assign repo_description = 'GitHub repository' %}
 {% assign repo_language = '' %}
 {% assign repo_language_color = '#8b949e' %}
@@ -56,6 +57,16 @@
     {% assign repo_cover = 'https://opengraph.githubassets.com/dongjae-shin-site/dongjae-shin/MDUI' %}
     {% assign repo_readme_image = 'https://raw.githubusercontent.com/dongjae-shin/MDUI/main/imgs/flowchart.png' %}
 {% endcase %}
+
+{% if repo_data %}
+  {% assign repo_description = repo_data.description | default: repo_description %}
+  {% assign repo_language = repo_data.language | default: repo_language %}
+  {% assign repo_language_color = repo_data.language_color | default: repo_language_color %}
+  {% assign repo_stars = repo_data.stars | default: repo_stars %}
+  {% assign repo_forks = repo_data.forks | default: repo_forks %}
+  {% assign repo_cover = repo_data.cover_image | default: repo_cover %}
+  {% assign repo_readme_image = repo_data.readme_image | default: repo_readme_image %}
+{% endif %}
 
 <div class="repo p-2">
   <a class="repo-card" href="https://github.com/{{ include.repository }}">
