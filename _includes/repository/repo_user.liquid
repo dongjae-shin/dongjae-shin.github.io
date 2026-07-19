@@ -1,34 +1,28 @@
-{% assign lang = site.lang | split: '-' | first %}
+{% assign github_user = site.data.repositories.github_user_metadata | where: 'username', include.username | first %}
+{% assign user_name = github_user.name | default: include.username %}
+{% assign user_bio = github_user.bio | default: 'GitHub user' %}
+{% assign user_location = github_user.location %}
+{% assign user_repos = github_user.public_repos %}
+{% assign user_followers = github_user.followers %}
 
-{% case lang %}
-  {% when 'pt' %}
-    {% assign lang = site.lang %}
-
-  {% when 'zh' %}
-    {% assign lang_last = site.lang | split: '-' | last %}
-    {% case lang_last %}
-      {% when 'cn', 'sg', 'my', 'hans' %}
-        {% assign lang = 'cn' %}
-      {% when 'tw', 'hk', 'mo', 'hant' %}
-        {% assign lang = 'zh-tw' %}
-    {% endcase %}
-
-    {% comment %} Add a new language using when... if needed {% endcomment %}
-    {% comment %} If you still encounter language-display issues, check the available locale codes in github-readme-stats (different from ISO-639 standard used in your website) {% endcomment %}
-    {% comment %} https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file#available-locales {% endcomment %}
-{% endcase %}
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/{{ include.username }}">
-    <img
-      class="only-light w-100"
-      alt="{{ include.username }}"
-      src="https://github-readme-stats.vercel.app/api/?username={{ include.username }}&theme={{ site.repo_theme_light }}&locale={{ lang }}&show_icons=true"
-    >
-    <img
-      class="only-dark w-100"
-      alt="{{ include.username }}"
-      src="https://github-readme-stats.vercel.app/api/?username={{ include.username }}&theme={{ site.repo_theme_dark }}&locale={{ lang }}&show_icons=true"
-    >
+<div class="repo repo-user p-2">
+  <a class="repo-user-card" href="https://github.com/{{ include.username }}">
+    <img class="repo-user-avatar" alt="{{ include.username }}" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" loading="lazy">
+    <div class="repo-user-body">
+      <div class="repo-user-name">{{ user_name }}</div>
+      <div class="repo-user-username">@{{ include.username }}</div>
+      <p class="repo-user-bio">{{ user_bio }}</p>
+      <div class="repo-user-meta">
+        {% if user_location %}
+          <span><i class="fa-solid fa-location-dot"></i> {{ user_location }}</span>
+        {% endif %}
+        {% if user_repos %}
+          <span><i class="fa-solid fa-code-branch"></i> {{ user_repos }} repos</span>
+        {% endif %}
+        {% if user_followers %}
+          <span><i class="fa-solid fa-user-group"></i> {{ user_followers }} followers</span>
+        {% endif %}
+      </div>
+    </div>
   </a>
 </div>

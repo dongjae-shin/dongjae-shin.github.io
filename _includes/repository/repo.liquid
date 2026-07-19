@@ -1,47 +1,86 @@
 {% assign repo_url = include.repository | split: '/' %}
-{% if site.data.repositories.github_users contains repo_url.first %}
-  {% assign show_owner = false %}
-{% else %}
-  {% assign show_owner = true %}
-{% endif %}
+{% assign repo_description = 'GitHub repository' %}
+{% assign repo_language = '' %}
+{% assign repo_language_color = '#8b949e' %}
+{% assign repo_stars = 0 %}
+{% assign repo_forks = 0 %}
+{% assign repo_cover = '' %}
+{% assign repo_readme_image = '' %}
 
-{% assign lang = site.lang | split: '-' | first %}
-
-{% case lang %}
-  {% when 'pt' %}
-    {% assign lang = site.lang %}
-
-  {% when 'zh' %}
-    {% assign lang_last = site.lang | split: '-' | last %}
-    {% case lang_last %}
-      {% when 'cn', 'sg', 'my', 'hans' %}
-        {% assign lang = 'cn' %}
-      {% when 'tw', 'hk', 'mo', 'hant' %}
-        {% assign lang = 'zh-tw' %}
-    {% endcase %}
-
-    {% comment %} Add a new language using when... if needed {% endcomment %}
-    {% comment %} If you still encounter language-display issues, check the available locale codes in github-readme-stats (different from ISO-639 standard used in your website) {% endcomment %}
-    {% comment %} https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file#available-locales {% endcomment %}
+{% case include.repository %}
+  {% when 'SUNCAT-Center/CatDegUS' %}
+    {% assign repo_description = "Python module for Catalysts' Degradation navigated by US" %}
+    {% assign repo_language = 'Jupyter Notebook' %}
+    {% assign repo_language_color = '#da5b0b' %}
+    {% assign repo_forks = 1 %}
+    {% assign repo_cover = 'https://opengraph.githubassets.com/dongjae-shin-site/SUNCAT-Center/CatDegUS' %}
+    {% assign repo_readme_image = 'https://raw.githubusercontent.com/SUNCAT-Center/CatDegUS/main/imgs/maximizer.png' %}
+  {% when 'SUNCAT-Center/PyCatRobin' %}
+    {% assign repo_description = 'PyCatRobin: Python module to analyze time-on-stream Catalyst testing results from Round Robin test' %}
+    {% assign repo_language = 'Python' %}
+    {% assign repo_language_color = '#3572a5' %}
+    {% assign repo_stars = 1 %}
+    {% assign repo_forks = 1 %}
+    {% assign repo_cover = 'https://opengraph.githubassets.com/dongjae-shin-site/SUNCAT-Center/PyCatRobin' %}
+    {% assign repo_readme_image = 'https://raw.githubusercontent.com/SUNCAT-Center/PyCatRobin/main/imgs/PyCatRobin_img_251012.png' %}
+  {% when 'dongjae-shin/pydrifts3d' %}
+    {% assign repo_description = 'python-based code to convert experimental DRIFTS data to 3D contour plot' %}
+    {% assign repo_language = 'Python' %}
+    {% assign repo_language_color = '#3572a5' %}
+    {% assign repo_stars = 2 %}
+    {% assign repo_cover = 'https://opengraph.githubassets.com/dongjae-shin-site/dongjae-shin/pydrifts3d' %}
+    {% assign repo_readme_image = 'https://raw.githubusercontent.com/dongjae-shin/pydrifts3d/main/imgs/pydrifts3d_scheme.png' %}
+  {% when 'dongjae-shin/GA4Qsys' %}
+    {% assign repo_description = 'Density functional theory (DFT)-based Genetic algorithm (GA) code for structural optimization of supported nanoparticle model in a queueing system' %}
+    {% assign repo_language = 'Python' %}
+    {% assign repo_language_color = '#3572a5' %}
+    {% assign repo_cover = 'https://opengraph.githubassets.com/dongjae-shin-site/dongjae-shin/GA4Qsys' %}
+    {% assign repo_readme_image = 'https://raw.githubusercontent.com/dongjae-shin/GA4Qsys/main/imgs/flowchart.png' %}
+  {% when 'dongjae-shin/SegrDNN' %}
+    {% assign repo_description = 'Code for hyper-parameter tuning of DNN model for surface segregation energy' %}
+    {% assign repo_language = 'Jupyter Notebook' %}
+    {% assign repo_language_color = '#da5b0b' %}
+    {% assign repo_cover = 'https://opengraph.githubassets.com/dongjae-shin-site/dongjae-shin/SegrDNN' %}
+    {% assign repo_readme_image = 'https://raw.githubusercontent.com/dongjae-shin/SegrDNN/main/imgs/figure2a.png' %}
+  {% when 'dongjae-shin/Ab_initio_thermo_HgOx' %}
+    {% assign repo_description = 'Ab-initio thermodynamic approach for the stability of SCR catalysts with different VOx structures' %}
+    {% assign repo_language = 'Jupyter Notebook' %}
+    {% assign repo_language_color = '#da5b0b' %}
+    {% assign repo_stars = 1 %}
+    {% assign repo_cover = 'https://opengraph.githubassets.com/dongjae-shin-site/dongjae-shin/Ab_initio_thermo_HgOx' %}
+    {% assign repo_readme_image = 'https://raw.githubusercontent.com/dongjae-shin/Ab_initio_thermo_HgOx/main/imgs/stability_diagram.jpg' %}
+  {% when 'dongjae-shin/MDUI' %}
+    {% assign repo_description = 'From-scratch molecular dynamics (MD) code (C language) and graphic user interface (GUI) (Java) for study' %}
+    {% assign repo_language = 'Java' %}
+    {% assign repo_language_color = '#b07219' %}
+    {% assign repo_cover = 'https://opengraph.githubassets.com/dongjae-shin-site/dongjae-shin/MDUI' %}
+    {% assign repo_readme_image = 'https://raw.githubusercontent.com/dongjae-shin/MDUI/main/imgs/flowchart.png' %}
 {% endcase %}
 
-{% if site.data.repositories.repo_description_lines_max %}
-  {% assign max_lines = site.data.repositories.repo_description_lines_max %}
-{% else %}
-  {% assign max_lines = 2 %}
-{% endif %}
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/{{ include.repository }}">
-    <img
-      class="only-light w-100"
-      alt="{{ include.repository }}"
-      src="https://github-readme-stats.vercel.app/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_light }}&locale={{ lang }}&show_owner={{ show_owner }}&description_lines_count={{ max_lines }}"
-    >
-    <img
-      class="only-dark w-100"
-      alt="{{ include.repository }}"
-      src="https://github-readme-stats.vercel.app/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_dark }}&locale={{ lang }}&show_owner={{ show_owner }}&description_lines_count={{ max_lines }}"
-    >
+<div class="repo p-2">
+  <a class="repo-card" href="https://github.com/{{ include.repository }}">
+    {% if repo_cover %}
+      <img class="repo-cover" alt="" src="{{ repo_cover }}" loading="lazy" onerror="this.remove()">
+    {% endif %}
+    {% if repo_readme_image %}
+      <img class="repo-readme-image" alt="" src="{{ repo_readme_image }}" loading="lazy" onerror="this.remove()">
+    {% endif %}
+    <div class="repo-card-title">
+      <i class="fa-brands fa-github"></i>
+      <span>{{ include.repository }}</span>
+    </div>
+    <p class="repo-card-description">
+      {{ repo_description }}
+    </p>
+    <div class="repo-card-meta">
+      {% if repo_language %}
+        <span class="repo-language">
+          <span class="repo-language-dot" style="background-color: {{ repo_language_color }}"></span>
+          {{ repo_language }}
+        </span>
+      {% endif %}
+      <span><i class="fa-regular fa-star"></i> {{ repo_stars }}</span>
+      <span><i class="fa-solid fa-code-fork"></i> {{ repo_forks }}</span>
+    </div>
   </a>
 </div>

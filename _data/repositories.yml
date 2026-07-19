@@ -1,11 +1,58 @@
 github_users:
   - dongjae-shin
 
+github_user_metadata:
+  - username: dongjae-shin
+    name: Dongjae Shin
+    bio: Postdoctoral Scholar, Stanford University & SLAC Nat'l Accelerator Lab
+    location: United States
+    public_repos: 20
+    followers: 10
+
 repo_description_lines_max: 2
 
 github_repos:
-  - dongjae-shin/CatDegUS
-  - dongjae-shin/PyCatRobin
-  - dongjae-shin/SegrDNN
+  - SUNCAT-Center/CatDegUS
+  - SUNCAT-Center/PyCatRobin
   - dongjae-shin/pydrifts3d
+  - dongjae-shin/GA4Qsys
+  - dongjae-shin/SegrDNN
+  - dongjae-shin/Ab_initio_thermo_HgOx
   - dongjae-shin/MDUI
+
+github_repo_metadata:
+  - full_name: SUNCAT-Center/CatDegUS
+    description: Python module for Catalysts' Degradation navigated by US
+    language: Jupyter Notebook
+    stars: 0
+    forks: 1
+  - full_name: SUNCAT-Center/PyCatRobin
+    description: "PyCatRobin: Python module to analyze time-on-stream Catalyst testing results from Round Robin test"
+    language: Python
+    stars: 1
+    forks: 1
+  - full_name: dongjae-shin/pydrifts3d
+    description: python-based code to convert experimental DRIFTS data to 3D contour plot
+    language: Python
+    stars: 2
+    forks: 0
+  - full_name: dongjae-shin/GA4Qsys
+    description: Density functional theory (DFT)-based Genetic algorithm (GA) code for structural optimization of supported nanoparticle model in a queueing system
+    language: Python
+    stars: 0
+    forks: 0
+  - full_name: dongjae-shin/SegrDNN
+    description: Code for hyper-parameter tuning of DNN model for surface segregation energy
+    language: Jupyter Notebook
+    stars: 0
+    forks: 0
+  - full_name: dongjae-shin/Ab_initio_thermo_HgOx
+    description: Ab-initio thermodynamic approach for the stability of SCR catalysts with different VOx structures
+    language: Jupyter Notebook
+    stars: 1
+    forks: 0
+  - full_name: dongjae-shin/MDUI
+    description: From-scratch molecular dynamics (MD) code (C language) and graphic user interface (GUI) (Java) for study
+    language: Java
+    stars: 0
+    forks: 0
