@@ -8,6 +8,7 @@ import html
 import re
 import sys
 from pathlib import Path
+from urllib.error import URLError
 from urllib.request import Request, urlopen
 
 
@@ -105,7 +106,7 @@ def main() -> int:
     else:
         try:
             profile_html = fetch_profile_html(user_id)
-        except Exception as exc:
+        except URLError as exc:
             print(f"Warning: could not fetch Google Scholar profile: {exc}", file=sys.stderr)
             print("Skipping citation update.")
             return 0
