@@ -1,4 +1,4 @@
-name: Update Google Scholar citations
+name: Update OpenAlex citations
 
 on:
   schedule:
@@ -16,14 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update cached citation counts
+      - name: Update cached citation counts from OpenAlex
         run: python3 _scripts/update_google_scholar_citations.py
 
       - name: Commit citation count changes
         id: auto-commit-action
         uses: stefanzweifel/git-auto-commit-action@v5.0.1
         with:
-          commit_message: Update Google Scholar citation counts
+          commit_message: Update OpenAlex citation counts
           file_pattern: _bibliography/papers.bib
 
       - name: Dispatch deploy workflow

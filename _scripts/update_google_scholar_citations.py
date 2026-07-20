@@ -1,125 +1,141 @@
 #!/usr/bin/env python3
-"""Update cached Google Scholar citation counts in _bibliography/papers.bib."""
+"""Update cached citation counts in _bibliography/papers.bib from OpenAlex."""
 
 from __future__ import annotations
 
-import argparse
-import html
+import json
+import os
 import re
 import sys
+import time
 from pathlib import Path
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
+from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOCIALS_PATH = ROOT / "_data" / "socials.yml"
 BIB_PATH = ROOT / "_bibliography" / "papers.bib"
+OPENALEX_WORKS_URL = "https://api.openalex.org/works/"
 
 
-def scholar_user_id() -> str:
-    match = re.search(r"^scholar_userid:\s*([^#\s]+)", SOCIALS_PATH.read_text(), re.M)
-    if not match:
-        raise RuntimeError(f"Could not find scholar_userid in {SOCIALS_PATH}")
-    return match.group(1).split("&", 1)[0].split("?", 1)[0]
+def normalize_doi(raw_doi: str) -> str:
+    doi = raw_doi.strip().strip("{}").strip()
+    doi = re.sub(r"^https?://(?:dx\.)?doi\.org/", "", doi, flags=re.I)
+    doi = re.sub(r"^doi:", "", doi, flags=re.I)
+    return doi.strip()
 
 
-def fetch_profile_html(user_id: str) -> str:
-    url = f"https://scholar.google.com/citations?user={user_id}&hl=en&pagesize=100"
-    request = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urlopen(request, timeout=30) as response:
-        return response.read().decode("latin1")
+def extract_field(block: list[str], field: str) -> str | None:
+    pattern = re.compile(rf"^\s*{re.escape(field)}\s*=\s*[{{\"](.+?)[}}\"],?\s*$", re.I)
+    for line in block:
+        match = pattern.match(line)
+        if match:
+            return match.group(1)
+    return None
 
 
-def parse_counts(profile_html: str, user_id: str) -> dict[str, str]:
-    counts: dict[str, str] = {}
-    row_pattern = re.compile(r'<tr class="gsc_a_tr">(.*?)(?=<tr class="gsc_a_tr">|</tbody>)', re.S)
-    id_pattern = re.compile(rf"citation_for_view={re.escape(user_id)}:([^&\"]+)")
-    count_pattern = re.compile(r'class="gsc_a_ac gs_ibl">([^<]*)</a>', re.S)
+def fetch_openalex_count(doi: str) -> int | None:
+    params = {"select": "id,doi,cited_by_count"}
+    api_key = os.environ.get("OPENALEX_API_KEY")
+    if api_key:
+        params["api_key"] = api_key
+    email = os.environ.get("OPENALEX_EMAIL")
+    if email:
+        params["mailto"] = email
 
-    for row_match in row_pattern.finditer(profile_html):
-        row = row_match.group(1)
-        article_id = id_pattern.search(row)
-        if not article_id:
-            continue
-        count = count_pattern.search(row)
-        count_text = html.unescape(count.group(1)) if count else ""
-        counts[article_id.group(1)] = re.sub(r"\D", "", count_text) or "0"
+    url = f"{OPENALEX_WORKS_URL}doi:{quote(doi, safe='')}?{urlencode(params)}"
+    request = Request(url, headers={"User-Agent": "dongjae-shin.github.io citation updater"})
+    try:
+        with urlopen(request, timeout=30) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except HTTPError as exc:
+        if exc.code == 404:
+            print(f"Warning: OpenAlex has no work for DOI {doi}", file=sys.stderr)
+            return None
+        raise
+    except (URLError, TimeoutError, json.JSONDecodeError) as exc:
+        print(f"Warning: could not fetch OpenAlex data for DOI {doi}: {exc}", file=sys.stderr)
+        return None
 
-    if not counts:
-        raise RuntimeError("No citation counts found in Google Scholar profile response")
-    return counts
+    count = data.get("cited_by_count")
+    return int(count) if isinstance(count, int) else None
 
 
-def update_bibliography(counts: dict[str, str]) -> int:
-    lines = BIB_PATH.read_text().splitlines()
+def replace_citation_field(block: list[str], count: int) -> tuple[list[str], bool]:
     updated: list[str] = []
+    changed = False
+    inserted = False
+    replacement = f"  google_scholar_citations={{{count}}},"
+
+    for line in block:
+        if re.match(r"^\s*google_scholar_citations\s*=", line):
+            if inserted:
+                changed = True
+                continue
+            indent = re.match(r"^\s*", line).group(0)
+            replacement = f"{indent}google_scholar_citations={{{count}}},"
+            updated.append(replacement)
+            changed = changed or line != replacement
+            inserted = True
+            continue
+
+        if not inserted and re.match(r"^\s*google_scholar_id\s*=", line):
+            updated.append(line)
+            indent = re.match(r"^\s*", line).group(0)
+            replacement = f"{indent}google_scholar_citations={{{count}}},"
+            updated.append(replacement)
+            changed = True
+            inserted = True
+            continue
+
+        updated.append(line)
+
+    return updated, changed
+
+
+def update_bibliography() -> int:
+    lines = BIB_PATH.read_text().splitlines()
+    output: list[str] = []
+    block: list[str] = []
     changed = 0
-    index = 0
+    in_entry = False
 
-    while index < len(lines):
-        line = lines[index]
-        match = re.match(r"^(\s*google_scholar_id\s*=\s*)\{([^}]+)\}(,?)\s*$", line)
-        if not match:
-            updated.append(line)
-            index += 1
+    for line in lines:
+        if line.startswith("@"):
+            in_entry = True
+            block = [line]
             continue
 
-        prefix, article_id, _comma = match.groups()
-        count = counts.get(article_id)
-        if count is None:
-            updated.append(line)
-            index += 1
+        if in_entry:
+            block.append(line)
+            if line.strip() == "}":
+                doi = extract_field(block, "doi")
+                if doi:
+                    count = fetch_openalex_count(normalize_doi(doi))
+                    time.sleep(0.1)
+                    if count is not None:
+                        block, block_changed = replace_citation_field(block, count)
+                        changed += int(block_changed)
+                output.extend(block)
+                block = []
+                in_entry = False
             continue
 
-        indent = re.match(r"^\s*", line).group(0)
-        normalized_id_line = f"{prefix}{{{article_id}}},"
-        count_line = f"{indent}google_scholar_citations={{{count}}},"
-        updated.append(normalized_id_line)
+        output.append(line)
 
-        next_index = index + 1
-        if next_index < len(lines) and re.match(r"^\s*google_scholar_citations\s*=", lines[next_index]):
-            if lines[next_index] != count_line:
-                changed += 1
-            next_index += 1
-        else:
-            changed += 1
-        updated.append(count_line)
-        index = next_index
+    if block:
+        output.extend(block)
 
-    new_text = "\n".join(updated) + "\n"
-    old_text = BIB_PATH.read_text()
-    if new_text != old_text:
+    new_text = "\n".join(output) + "\n"
+    if new_text != BIB_PATH.read_text():
         BIB_PATH.write_text(new_text)
     return changed
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--input", help="Use a saved Google Scholar profile HTML file")
-    args = parser.parse_args()
-
-    user_id = scholar_user_id()
-
-    if args.input:
-        profile_html = Path(args.input).read_text(encoding="latin1")
-    else:
-        try:
-            profile_html = fetch_profile_html(user_id)
-        except URLError as exc:
-            print(f"Warning: could not fetch Google Scholar profile: {exc}", file=sys.stderr)
-            print("Skipping citation update.")
-            return 0
-
-    try:
-        counts = parse_counts(profile_html, user_id)
-    except RuntimeError as exc:
-        print(f"Warning: {exc}", file=sys.stderr)
-        print("Skipping citation update.")
-        return 0
-
-    changed = update_bibliography(counts)
-    print(f"Updated {changed} citation count field(s).")
+    changed = update_bibliography()
+    print(f"Updated {changed} OpenAlex citation count field(s).")
     return 0
 
 
