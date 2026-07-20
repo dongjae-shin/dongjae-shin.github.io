@@ -81,7 +81,7 @@ def pinned_repos(username: str) -> list[str]:
     }
     """
     payload = request_json("https://api.github.com/graphql", {"query": query, "variables": {"login": username}})
-    nodes = payload.get("data", {}).get("user", {}).get("pinnedItems", {}).get("nodes", [])
+    nodes = ((payload.get("data") or {}).get("user") or {}).get("pinnedItems", {}).get("nodes") or []
     repos = []
     for node in nodes:
         if node:
@@ -92,7 +92,7 @@ def pinned_repos(username: str) -> list[str]:
 def readme_image(full_name: str, default_branch: str) -> str:
     try:
         readme = request_json(f"https://api.github.com/repos/{full_name}/readme")
-    except urllib.error.HTTPError:
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError):
         return ""
 
     download_url = readme.get("download_url")
@@ -156,7 +156,7 @@ def write_yaml(data: dict) -> None:
 def main() -> int:
     try:
         repos = pinned_repos(GITHUB_USER)
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as error:
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, AttributeError, KeyError, ValueError) as error:
         print(f"Could not fetch pinned repositories: {error}; keeping repository data unchanged.", file=sys.stderr)
         return 0
 
