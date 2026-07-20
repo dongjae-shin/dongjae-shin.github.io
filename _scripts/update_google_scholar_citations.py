@@ -99,8 +99,24 @@ def main() -> int:
     args = parser.parse_args()
 
     user_id = scholar_user_id()
-    profile_html = Path(args.input).read_text(encoding="latin1") if args.input else fetch_profile_html(user_id)
-    counts = parse_counts(profile_html, user_id)
+
+    if args.input:
+        profile_html = Path(args.input).read_text(encoding="latin1")
+    else:
+        try:
+            profile_html = fetch_profile_html(user_id)
+        except Exception as exc:
+            print(f"Warning: could not fetch Google Scholar profile: {exc}", file=sys.stderr)
+            print("Skipping citation update.")
+            return 0
+
+    try:
+        counts = parse_counts(profile_html, user_id)
+    except RuntimeError as exc:
+        print(f"Warning: {exc}", file=sys.stderr)
+        print("Skipping citation update.")
+        return 0
+
     changed = update_bibliography(counts)
     print(f"Updated {changed} citation count field(s).")
     return 0
