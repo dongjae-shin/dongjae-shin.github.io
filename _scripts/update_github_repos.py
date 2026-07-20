@@ -156,7 +156,7 @@ def write_yaml(data: dict) -> None:
 def main() -> int:
     try:
         repos = pinned_repos(GITHUB_USER)
-    except Exception as error:
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, AttributeError, KeyError, ValueError) as error:
         print(f"Could not fetch pinned repositories: {error}; keeping repository data unchanged.", file=sys.stderr)
         return 0
 
